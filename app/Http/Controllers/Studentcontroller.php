@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use View;
+use Route;
 
 class Studentcontroller extends Controller
 {
     public function index(){
-        return view('welcome');
+        return View::make('welcome');
     }
 
     public function getStudentData($student_no){
