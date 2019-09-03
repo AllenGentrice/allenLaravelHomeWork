@@ -11,14 +11,18 @@
 |
 */
 
-Route::get('/', 'Studentcontroller@index');
+Route::get('/','Studentcontroller@index');
+
+Route::get('/board', 'BoardController@getIndex')->name('board.index');
+
+Route::get('/name', 'BoardController@getName')->name('board.name');
 
 
 Route::pattern('student_no','s[0-9]{10}');
 Route::group(['prefix'=>'students'],function (){
 
-    Route::get('{student_no}', 'Studentcontroller@getStudentData')->name('students');
+    Route::get('/{student_no}', 'Studentcontroller@getStudentData')->name('students');
 
-    Route::get('{student_no}/score/{subject?}', 'Studentcontroller@getStudentScore')->where(['subject'=>'(chinese|english|math)'])->name('students.score');
+    Route::get('/{student_no}/score/{subject?}', 'Studentcontroller@getStudentScore')->where(['subject'=>'(chinese|english|math)'])->name('students.score');
 });
 
